@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+    @font-face {
+        font-family:"dana";
+        src:url( "../fonts/Dana/woff2/DanaFaNum-Regular.woff2") format("woff2");
+        font-display: swap;
+    }
+    @font-face {
+        font-family:"dana Medium";
+        src: url( "../fonts/Dana/woff2/DanaFaNum-Medium.woff2") format("woff2");
+        font-display: swap;
+    }
+    @font-face {
+        font-family:"dana DemiBold";
+        src: url( "../fonts/Dana/woff2/DanaFaNum-DemiBold.woff2") format("woff2");
+        font-display: swap;
+    }
+    @font-face {
+        font-family:"moradda Light";
+        src: url( "../fonts/Morabba/woff2/Morabba-Light.woff2") format("woff2");
+        font-display: swap;
+    }
+    @font-face {
+        font-family:"moradda Meduim";
+        src: url( "../fonts/Morabba/woff2/Morabba-Medium.woff2") format("woff2");
+        font-display: swap;
+    }
+    @font-face {
+        font-family:"moradda Bold";
+        src: url( "../fonts/Morabba/woff2/Morabba-Bold.woff2") format("woff2");
+        font-display: swap;
+    }
+
+    /* width */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+      
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: #888;
+        border-radius: 16px;
+    }
+      
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #4a4a4a;
+        border-radius: 16px;
+    }
+      
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+}
+@layer components{
+    /* desctop */
+    .header-desc{
+        @apply hidden md:flex md:w-[98%] lg:w-[90%] md:px-5 lg:px-10 items-center fixed top-10 right-0 left-0  mx-auto  py-5 bg-black/50 backdrop-blur-[6px] rounded-3xl h-24 z-50;
+    }
+    .menu-desc{
+        @apply flex md:gap-x-5 lg:gap-x-9 h-full  text-gray-300 tracking-tightest child:leading-[56px] ;
+    }
+    .submenu-desc{
+        @apply absolute top-full  opacity-0 invisible transition-all delay-75 group-hover:opacity-100 group-hover:visible  w-52 p-6 space-y-4 text-zinc-700 dark:text-white text-base tracking-normal
+        bg-white dark:bg-gray-700 rounded-2xl border-t-[3px] border-orange-300 shadow-normal  child:transition-colors  child-hover:text-orange-300 ;
+    }
+
+    /* mobile menu*/
+    .sub-menu--active{
+        @apply pr-2.5 relative text-orange-300;
+    }
+    .sub-menu--active::after{
+        content: "";
+        @apply h-1 w-1 bg-orange-300 block absolute top-0 bottom-0 right-0 m-auto rounded-full
+    }
+    .submenu-mob{
+        @apply hidden flex-col mt-3 pr-7 gap-y-3 text-zinc-700 dark:text-white text-sm 
+        child:transition-colors  child-hover:text-orange-300;
+    }
+    .submenu-mob--open{
+        @apply flex;
+    }
+
+    /* overlay */
+    .overlay{
+        @apply invisible opacity-0 fixed md:hidden inset-0 w-full h-full bg-black/50 z-10 transition-all;
+    }
+    .overlay--show{
+        @apply visible opacity-100;
+    }
+    /* circle icon scroll */
+    .circle{
+        @apply hidden md:flex justify-center items-center border rounded-full
+    }
+    .circle--lg{
+        @apply absolute bottom-0 left-0 right-0 mx-auto translate-y-2/4 border-white/25 w-[203px] h-[203px];
+    }
+    .circle--md{
+        @apply border-white/50 w-[145px] h-[145px]
+    }
+    .circle--sm{
+        @apply border-white/80 w-[95px] h-[95px]
+    }
+    /* background product section */
+    @media (min-width: 1024px){
+        html.dark .porducts{
+          background-image: url('../image/products-bg.png');
+        }
+       .porducts{
+          background: linear-gradient(rgba(244, 244, 245,0.65),rgba(244, 244, 245,0.65)),url('../image/products-bg.png');
+          background-repeat: no-repeat;
+          background-size: 100%;
+        }
+    }
+    /* all section header style */
+
+    .section-title{
+        @apply font-moraddaMeduim text-2xl md:text-5xl text-zinc-700 dark:text-white;
+    }
+    .section-subtitle{
+        @apply inline-block font-moraddaLight text-lg md:text-3xl text-zinc-700 dark:text-white mt-0.5 md:mt-1.5 leading-[48px];
+    }
+    .section-link{
+        @apply inline-flex h-10 pr-3 pl-1 text-base md:text-xl items-center justify-center md:gap-x-1 text-orange-300 hover:bg-orange-300/20 tracking-tightest transition-colors;
+    }
+
+    .offer{
+        @apply relative text-gray-400 
+    }
+    .offer::after{
+        content:'';
+        position: absolute;
+        height: 1px;
+        width: 100%;
+        background-color: #EF4444;
+        inset: 0;
+        margin: auto;
+        top: -2.5px;
+    }
+    .category-banner--item-right{
+        background: linear-gradient(270deg, rgba(0, 0, 0, 0.60) 33.85%, rgba(0, 0, 0, 0.10) 100%),url('../image/categories/category-right.jpg');
+
+    }
+    .category-banner--item-left{
+        background: linear-gradient(270deg, rgba(0, 0, 0, 0.60) 33.85%, rgba(0, 0, 0, 0.10) 100%),url('../image/categories/category-left.jpg');
+
+    }
+
+    /*  */
+    .swiper-button-prev-custom,
+    .swiper-button-next-custom{
+        @apply item-center h-[44px] w-[44px] rounded-full text-zinc-700 bg-white dark:bg-zinc-700 dark:text-white hover:bg-gray-300 dark:hover:text-zinc-700 dark:hover:bg-white transition-colors
+    }
+}
+@layer utilities{
+    .item-center{
+        @apply flex items-center justify-center
+    }
+    .star-h-w{
+        @apply h-4 w-4 md:h-5 md:w-5 xl:h-6 xl:w-6;
+    }
+}
